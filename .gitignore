@@ -1,0 +1,7 @@
+DataStructures/obj/
+packages/
+DataStructures.Core/obj/
+DataStructures/bin/
+.vs/DataStructures/v15/
+DataStructures.UnitTests/bin/
+DataStructures.UnitTests/obj/
