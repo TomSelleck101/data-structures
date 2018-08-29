@@ -323,5 +323,15 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList
 
             _start = prev;
         }
+
+        public void BubbleSort<T>()
+        {
+            SingleLinkedListNode<T> end, current, next;
+
+            for (end = null; end != _start.Link; end = current)
+            {
+
+            }
+        }
     }
 }

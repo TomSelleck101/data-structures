@@ -497,5 +497,28 @@ namespace DataStructures.UnitTests
             Assert.AreEqual(l.GetElementPosition(2), 2);
             Assert.AreEqual(l.GetElementPosition(3), 1);
         }
+
+        [Test]
+        public void BubbleSortLinkedList()
+        {
+            //Arrange
+            var l = new SingleLinkedList<int>();
+
+            l.AddLast(5);
+            l.AddLast(9);
+            l.AddLast(1);
+            l.AddLast(10);
+            l.AddLast(2);
+
+            //Act
+            l.BubbleSort();
+
+            //Assert
+            Assert.AreEqual(l.GetElementPosition(1), 1);
+            Assert.AreEqual(l.GetElementPosition(2), 2);
+            Assert.AreEqual(l.GetElementPosition(5), 3);
+            Assert.AreEqual(l.GetElementPosition(9), 4);
+            Assert.AreEqual(l.GetElementPosition(10), 5);
+        }
     }
 }
