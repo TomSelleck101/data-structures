@@ -324,14 +324,167 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList
             _start = prev;
         }
 
-        public void BubbleSort<T>()
+        public void BubbleSortByDataExchange()
         {
-            SingleLinkedListNode<T> end, current, next;
+            SingleLinkedListNode<T> end = null, current = null, next = null;
 
             for (end = null; end != _start.Link; end = current)
             {
-
+                for (current = _start; current.Link != end; current = current.Link)
+                {
+                    next = current.Link;
+                    if (current.CompareTo(next) >= 0)
+                    {
+                        var temp = current.Data;
+                        current.Data = next.Data;
+                        next.Data = temp;
+                    }
+                }
             }
+        }
+
+        public void BubbleSortByLinkExchange()
+        {
+            SingleLinkedListNode<T> end = null, r = null, p = null, q = null, temp = null;
+
+            for (end = null; end != _start.Link; end = p)
+            {
+                for (r = p = _start; p.Link != end; r = p, p = p.Link)
+                {
+                    q = p.Link;
+                    if (p.CompareTo(q) > 0)
+                    {
+                        p.Link = q.Link;
+                        q.Link = p;
+                        if (p != _start)
+                        {
+                            r.Link = q;
+                        }
+                        else
+                        {
+                            _start = q;
+                        }
+
+                        //temp = p;
+                        p = q;
+                        //q = temp;
+                    }
+                }
+            }
+        }
+
+        public SingleLinkedList<T> MergeLinkedListWithNewList(SingleLinkedList<T> list)
+        {
+            SingleLinkedList<T> mergedList = new SingleLinkedList<T>();
+
+            mergedList._start = MergeCreateList(_start, list._start);
+
+            return mergedList;
+        }
+
+        private SingleLinkedListNode<T> MergeCreateList(SingleLinkedListNode<T> p1, SingleLinkedListNode<T> p2)
+        {
+            // Determine start node
+            SingleLinkedListNode<T> startM;
+            if (p1.CompareTo(p2) == (0 | -1))
+            {
+                startM = new SingleLinkedListNode<T>(p1.Data);
+                p1 = p1.Link;
+            }
+            else
+            {
+                startM = new SingleLinkedListNode<T>(p2.Data);
+                p2 = p2.Link;
+            }
+
+            // Add nodes to start node and advance pointers
+            SingleLinkedListNode<T> pM = startM;
+            while (p1 != null && p2 != null)
+            {
+                if (p1.CompareTo(p2) == (0 | -1))
+                {
+                    pM.Link = new SingleLinkedListNode<T>(p1.Data);
+                    p1 = p1.Link;
+                }
+                else
+                {
+                    pM.Link = new SingleLinkedListNode<T>(p2.Data);
+                    p2 = p2.Link;
+                }
+                pM = pM.Link;
+            }
+
+            // Add remaining elements to list
+            while (p1 != null)
+            {
+                pM.Link = new SingleLinkedListNode<T>(p1.Data);
+                p1 = p1.Link;
+                pM = pM.Link;
+            }
+
+            while (p2 != null)
+            {
+                pM.Link = new SingleLinkedListNode<T>(p2.Data);
+                p2 = p2.Link;
+                pM = pM.Link;
+            }
+
+            return startM;
+        }
+
+        public SingleLinkedList<T> MergeLinkedListWithLinkRearrange(SingleLinkedList<T> list)
+        {
+            SingleLinkedList<T> mergedList = new SingleLinkedList<T>();
+
+            mergedList._start = MergeRearrange(_start, list._start);
+
+            return mergedList;
+        }
+
+        private SingleLinkedListNode<T> MergeRearrange(SingleLinkedListNode<T> p1, SingleLinkedListNode<T> p2)
+        {
+            // Determine start node
+            SingleLinkedListNode<T> startM;
+            if (p1.CompareTo(p2) == (0 | -1))
+            {
+                startM = new SingleLinkedListNode<T>(p1.Data);
+                p1 = p1.Link;
+            }
+            else
+            {
+                startM = new SingleLinkedListNode<T>(p2.Data);
+                p2 = p2.Link;
+            }
+
+            // Add links to node and advance pointers
+            SingleLinkedListNode<T> pM = startM;
+            while (p1 != null && p2 != null)
+            {
+                if (p1.CompareTo(p2) <= 0)
+                {
+                    pM.Link = p1;
+                    pM = pM.Link;
+                    p1 = p1.Link;
+                }
+                else
+                {
+                    pM.Link = p2;
+                    pM = pM.Link;
+                    p2 = p2.Link;
+                }
+            }
+
+            // Add remaining elements to list
+            if (p1 == null)
+            {
+                pM.Link = p2;
+            }
+            else
+            {
+                pM.Link = p1;
+            }
+
+            return startM;
         }
     }
 }

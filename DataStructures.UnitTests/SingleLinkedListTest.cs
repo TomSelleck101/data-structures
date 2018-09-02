@@ -499,7 +499,7 @@ namespace DataStructures.UnitTests
         }
 
         [Test]
-        public void BubbleSortLinkedList()
+        public void BubbleSortByDataExchange()
         {
             //Arrange
             var l = new SingleLinkedList<int>();
@@ -511,7 +511,7 @@ namespace DataStructures.UnitTests
             l.AddLast(2);
 
             //Act
-            l.BubbleSort();
+            l.BubbleSortByDataExchange();
 
             //Assert
             Assert.AreEqual(l.GetElementPosition(1), 1);
@@ -519,6 +519,103 @@ namespace DataStructures.UnitTests
             Assert.AreEqual(l.GetElementPosition(5), 3);
             Assert.AreEqual(l.GetElementPosition(9), 4);
             Assert.AreEqual(l.GetElementPosition(10), 5);
+        }
+
+        [Test]
+        public void BubbleSortByLinkExchange()
+        {
+            //Arrange
+            var l = new SingleLinkedList<int>();
+
+            l.AddLast(100);
+            l.AddLast(5);
+            l.AddLast(9);
+            l.AddLast(1);
+            l.AddLast(10);
+            l.AddLast(2);
+            l.AddLast(12);
+            l.AddLast(22);
+
+            //Act
+            l.BubbleSortByLinkExchange();
+
+            //Assert
+            Assert.AreEqual(l.GetElementPosition(1), 1);
+            Assert.AreEqual(l.GetElementPosition(2), 2);
+            Assert.AreEqual(l.GetElementPosition(5), 3);
+            Assert.AreEqual(l.GetElementPosition(9), 4);
+            Assert.AreEqual(l.GetElementPosition(10), 5);
+            Assert.AreEqual(l.GetElementPosition(12), 6);
+            Assert.AreEqual(l.GetElementPosition(22), 7);
+            Assert.AreEqual(l.GetElementPosition(100), 8);
+        }
+
+        [Test]
+        public void MergeLinkedListByCreatingNewList()
+        {
+            //Arrange
+            var l1 = new SingleLinkedList<int>();
+
+            l1.AddLast(1);
+            l1.AddLast(5);
+            l1.AddLast(9);
+            l1.AddLast(100);
+
+            var l2 = new SingleLinkedList<int>();
+
+            l2.AddLast(2);
+            l2.AddLast(3);
+            l2.AddLast(4);
+            l2.AddLast(12);
+            l2.AddLast(15);
+
+            //Act
+            SingleLinkedList<int> l3 = l1.MergeLinkedListWithNewList(l2);
+
+            //Assert
+            Assert.AreEqual(l3.GetElementPosition(1), 1);
+            Assert.AreEqual(l3.GetElementPosition(2), 2);
+            Assert.AreEqual(l3.GetElementPosition(3), 3);
+            Assert.AreEqual(l3.GetElementPosition(4), 4);
+            Assert.AreEqual(l3.GetElementPosition(5), 5);
+            Assert.AreEqual(l3.GetElementPosition(9), 6);
+            Assert.AreEqual(l3.GetElementPosition(12), 7);
+            Assert.AreEqual(l3.GetElementPosition(15), 8);
+            Assert.AreEqual(l3.GetElementPosition(100), 9);
+        }
+
+        [Test]
+        public void MergeLinkedListByLinkRearrange()
+        {
+            //Arrange
+            var l1 = new SingleLinkedList<int>();
+
+            l1.AddLast(1);
+            l1.AddLast(5);
+            l1.AddLast(9);
+            l1.AddLast(100);
+
+            var l2 = new SingleLinkedList<int>();
+
+            l2.AddLast(2);
+            l2.AddLast(3);
+            l2.AddLast(4);
+            l2.AddLast(12);
+            l2.AddLast(15);
+
+            //Act
+            SingleLinkedList<int> l3 = l1.MergeLinkedListWithLinkRearrange(l2);
+
+            //Assert
+            Assert.AreEqual(l3.GetElementPosition(1), 1);
+            Assert.AreEqual(l3.GetElementPosition(2), 2);
+            Assert.AreEqual(l3.GetElementPosition(3), 3);
+            Assert.AreEqual(l3.GetElementPosition(4), 4);
+            Assert.AreEqual(l3.GetElementPosition(5), 5);
+            Assert.AreEqual(l3.GetElementPosition(9), 6);
+            Assert.AreEqual(l3.GetElementPosition(12), 7);
+            Assert.AreEqual(l3.GetElementPosition(15), 8);
+            Assert.AreEqual(l3.GetElementPosition(100), 9);
         }
     }
 }
