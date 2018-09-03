@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataStructures.Core.LinkedList.SingleLinkedList
+namespace DataStructures.Core.LinkedList.LinkedListNodes
 {
     public class SingleLinkedListNode<T>
     {

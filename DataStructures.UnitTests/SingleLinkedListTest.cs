@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataStructures.Core.LinkedList.SingleLinkedList;
+using DataStructures.Core.LinkedList.SingleLinkedList.Implementation;
+using DataStructures.Core.LinkedList.SingleLinkedList.Interface;
 using NUnit.Framework;
 
 namespace DataStructures.UnitTests
@@ -14,7 +15,7 @@ namespace DataStructures.UnitTests
         public void AddToFrontOfLinkedList()
         {
             //Arrange
-            SingleLinkedList<int> l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddFirst(1);
             l.AddFirst(2);
@@ -31,7 +32,7 @@ namespace DataStructures.UnitTests
         public void AddToEndOfLinkedList()
         {
             //Arrange
-            SingleLinkedList<int> l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -48,7 +49,7 @@ namespace DataStructures.UnitTests
         public void CountLinkedList()
         {
             //Arrange
-            SingleLinkedList<int> l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -64,7 +65,7 @@ namespace DataStructures.UnitTests
         public void InsertAfterElementOfLinkedList()
         {
             //Arrange
-            SingleLinkedList<int> l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -83,7 +84,7 @@ namespace DataStructures.UnitTests
         public void InsertAfterLastElementOfLinkedList()
         {
             //Arrange
-            SingleLinkedList<int> l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -102,7 +103,7 @@ namespace DataStructures.UnitTests
         public void InsertAfterFirstElementOfLinkedList()
         {
             //Arrange
-            SingleLinkedList<int> l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -121,7 +122,7 @@ namespace DataStructures.UnitTests
         public void InsertAfterNonExistentElementThrowsException()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -130,14 +131,14 @@ namespace DataStructures.UnitTests
 
             //Act
             //Assert
-            Assert.Throws<ArgumentException>( () => l.AddAfterElement(9, 5));
+            Assert.Throws<ArgumentException>(() => l.AddAfterElement(9, 5));
         }
 
         [Test]
         public void InsertBeforeElementOfLinkedList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -156,7 +157,7 @@ namespace DataStructures.UnitTests
         public void InsertBeforeFirstElement()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -175,7 +176,7 @@ namespace DataStructures.UnitTests
         public void InsertBeforeLastElement()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -189,11 +190,12 @@ namespace DataStructures.UnitTests
             Assert.AreEqual(l.Contains(9), true);
             Assert.AreEqual(l.GetElementPosition(9), 4);
         }
+
         [Test]
         public void InsertBeforeNonExistentElementThrowsException()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -209,7 +211,7 @@ namespace DataStructures.UnitTests
         public void InsertElementAtPositionOfLinkedList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -228,7 +230,7 @@ namespace DataStructures.UnitTests
         public void InsertElementAtFirstPositionOfLinkedList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -247,7 +249,7 @@ namespace DataStructures.UnitTests
         public void InsertElementAtSecondLastPositionOfLinkedList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -267,7 +269,7 @@ namespace DataStructures.UnitTests
         public void InsertElementAtLastPosition()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -286,7 +288,7 @@ namespace DataStructures.UnitTests
         public void InsertElementAtOutOfBoundsPositionThrowsException()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -302,7 +304,7 @@ namespace DataStructures.UnitTests
         public void DeleteFirstNode()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -322,7 +324,7 @@ namespace DataStructures.UnitTests
         public void DeleteFirstNodeOneElementList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
             l.AddLast(1);
             Assert.AreEqual(l.Contains(1), true);
 
@@ -337,7 +339,7 @@ namespace DataStructures.UnitTests
         public void DeleteFirstNodeEmptyList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             //Act
             l.DeleteFirstNode();
@@ -350,7 +352,7 @@ namespace DataStructures.UnitTests
         public void DeleteLastNode()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -370,7 +372,7 @@ namespace DataStructures.UnitTests
         public void DeleteLastNodeOneElementList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
 
@@ -387,7 +389,7 @@ namespace DataStructures.UnitTests
         public void DeleteLastNodeEmptyList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             //Act
             l.DeleteLastNode();
@@ -400,7 +402,7 @@ namespace DataStructures.UnitTests
         public void DeleteElement()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -420,7 +422,7 @@ namespace DataStructures.UnitTests
         public void DeleteFirstElement()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -440,7 +442,7 @@ namespace DataStructures.UnitTests
         public void DeleteLastElement()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -461,7 +463,7 @@ namespace DataStructures.UnitTests
         public void DeleteNonExistentElementThrowsException()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -479,7 +481,7 @@ namespace DataStructures.UnitTests
         public void ReverseLinkedList()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(1);
             l.AddLast(2);
@@ -502,7 +504,7 @@ namespace DataStructures.UnitTests
         public void BubbleSortByDataExchange()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(5);
             l.AddLast(9);
@@ -525,7 +527,7 @@ namespace DataStructures.UnitTests
         public void BubbleSortByLinkExchange()
         {
             //Arrange
-            var l = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
 
             l.AddLast(100);
             l.AddLast(5);
@@ -570,7 +572,7 @@ namespace DataStructures.UnitTests
             l2.AddLast(15);
 
             //Act
-            SingleLinkedList<int> l3 = l1.MergeLinkedListWithNewList(l2);
+            ISingleLinkedList<int> l3 = l1.MergeLinkedListWithNewList(l2);
 
             //Assert
             Assert.AreEqual(l3.GetElementPosition(1), 1);
@@ -604,7 +606,7 @@ namespace DataStructures.UnitTests
             l2.AddLast(15);
 
             //Act
-            SingleLinkedList<int> l3 = l1.MergeLinkedListWithLinkRearrange(l2);
+            ISingleLinkedList<int> l3 = l1.MergeLinkedListWithLinkRearrange(l2);
 
             //Assert
             Assert.AreEqual(l3.GetElementPosition(1), 1);
@@ -616,6 +618,176 @@ namespace DataStructures.UnitTests
             Assert.AreEqual(l3.GetElementPosition(12), 7);
             Assert.AreEqual(l3.GetElementPosition(15), 8);
             Assert.AreEqual(l3.GetElementPosition(100), 9);
+        }
+
+        [Test]
+        public void MergeSort()
+        {
+            //Arrange
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
+
+            l.AddLast(100);
+            l.AddLast(5);
+            l.AddLast(9);
+            l.AddLast(1);
+            l.AddLast(10);
+            l.AddLast(2);
+            l.AddLast(12);
+            l.AddLast(22);
+
+            //Act
+            l.MergeSort();
+
+            //Assert
+            Assert.AreEqual(l.GetElementPosition(1), 1);
+            Assert.AreEqual(l.GetElementPosition(2), 2);
+            Assert.AreEqual(l.GetElementPosition(5), 3);
+            Assert.AreEqual(l.GetElementPosition(9), 4);
+            Assert.AreEqual(l.GetElementPosition(10), 5);
+            Assert.AreEqual(l.GetElementPosition(12), 6);
+            Assert.AreEqual(l.GetElementPosition(22), 7);
+            Assert.AreEqual(l.GetElementPosition(100), 8);
+        }
+
+        [Test]
+        public void DetectCycle()
+        {
+            //Arrange
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
+
+            l.AddLast(100);
+            l.AddLast(5);
+            l.AddLast(9);
+            l.AddLast(1);
+
+
+            // Insert cycle
+            var listHead = l.GetHead();
+            while (listHead.Link != null)
+            {
+                listHead = listHead.Link;
+            }
+
+            var listEnd = listHead;
+
+            listHead = l.GetHead();
+            while (listHead.Data != 5)
+            {
+                listHead = listHead.Link;
+            }
+
+            listEnd.Link = listHead;
+
+            //Act
+            var r = l.HasCycle();
+
+            //Assert
+            Assert.AreEqual(r, true);
+        }
+
+        [Test]
+        public void DetectCycleEmptyList()
+        {
+            //Arrange
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
+
+            //Act
+            var r = l.HasCycle();
+
+            //Assert
+            Assert.AreEqual(r, false);
+        }
+
+        [Test]
+        public void DetectCycleOneElement()
+        {
+            //Arrange
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
+            l.AddLast(1);
+
+            //Act
+            var r = l.HasCycle();
+
+            //Assert
+            Assert.AreEqual(r, false);
+        }
+
+        [Test]
+        public void DetectCycleManyElements()
+        {
+            //Arrange
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
+            l.AddLast(100);
+            l.AddLast(5);
+            l.AddLast(9);
+            l.AddLast(1);
+            l.AddLast(10);
+            l.AddLast(2);
+            l.AddLast(12);
+            l.AddLast(22);
+
+
+            //Act
+            var r = l.HasCycle();
+
+            //Assert
+            Assert.AreEqual(r, false);
+        }
+
+        [Test]
+        public void RemoveCycle()
+        {
+            //Arrange
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
+
+            l.AddLast(100);
+            l.AddLast(5);
+            l.AddLast(9);
+            l.AddLast(1);
+
+            // Insert cycle
+            var listHead = l.GetHead();
+            while (listHead.Link != null)
+            {
+                listHead = listHead.Link;
+            }
+
+            var listEnd = listHead;
+
+            listHead = l.GetHead();
+            while (listHead.Data != 5)
+            {
+                listHead = listHead.Link;
+            }
+
+            listEnd.Link = listHead;
+
+            var r = l.HasCycle();
+            Assert.AreEqual(r, true);
+
+            // Act
+            l.RemoveCycle();
+
+            // Assert 
+            r = l.HasCycle();
+            Assert.AreEqual(r, false);
+        }
+
+        [Test]
+        public void RemoveCycleEmptyList()
+        {
+            //Arrange
+            ISingleLinkedList<int> l = new SingleLinkedList<int>();
+
+            // Act
+            var r = l.HasCycle();
+            Assert.AreEqual(r, false);
+
+            l.RemoveCycle();
+
+            // Assert 
+            r = l.HasCycle();
+            Assert.AreEqual(r, false);
         }
     }
 }

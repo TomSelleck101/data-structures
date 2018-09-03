@@ -1,6 +1,8 @@
 ﻿using System;
+using DataStructures.Core.LinkedList.LinkedListNodes;
+using DataStructures.Core.LinkedList.SingleLinkedList.Interface;
 
-namespace DataStructures.Core.LinkedList.SingleLinkedList
+namespace DataStructures.Core.LinkedList.SingleLinkedList.Implementation
 {
     /*
      * Dynamic data structure made up of nodes
@@ -10,13 +12,18 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList
      * Effcient random access not possible
      * Implementation requires extra memory
      */
-    public class SingleLinkedList<T>
+    public class SingleLinkedList<T> : ISingleLinkedList<T>
     {
         private SingleLinkedListNode<T> _start;
 
         public SingleLinkedList()
         {
             _start = null;
+        }
+
+        public SingleLinkedListNode<T> GetHead()
+        {
+            return _start;
         }
 
         public int GetElementPosition(T element)
@@ -373,11 +380,11 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList
             }
         }
 
-        public SingleLinkedList<T> MergeLinkedListWithNewList(SingleLinkedList<T> list)
+        public ISingleLinkedList<T> MergeLinkedListWithNewList(ISingleLinkedList<T> list)
         {
             SingleLinkedList<T> mergedList = new SingleLinkedList<T>();
 
-            mergedList._start = MergeCreateList(_start, list._start);
+            mergedList._start = MergeCreateList(_start, list.GetHead());
 
             return mergedList;
         }
@@ -432,11 +439,48 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList
             return startM;
         }
 
-        public SingleLinkedList<T> MergeLinkedListWithLinkRearrange(SingleLinkedList<T> list)
+        public void MergeSort()
+        {
+            _start = MergeSort(_start);
+        }
+
+        private SingleLinkedListNode<T> MergeSort(SingleLinkedListNode<T> listStart)
+        {
+            if (listStart == null || listStart.Link == null)
+            {
+                return listStart;
+            }
+
+            SingleLinkedListNode<T> start1 = listStart;
+            SingleLinkedListNode<T> start2 = DivideList(listStart);
+
+            start1 = MergeSort(start1);
+            start2 = MergeSort(start2);
+
+            SingleLinkedListNode<T> startM = MergeRearrange(start1, start2);
+
+            return startM;
+        }
+
+        private SingleLinkedListNode<T> DivideList(SingleLinkedListNode<T> list)
+        {
+            SingleLinkedListNode<T> fastPointer = list.Link.Link;
+            while (fastPointer != null && fastPointer.Link != null)
+            {
+                list = list.Link;
+                fastPointer = fastPointer.Link.Link;
+            }
+
+            SingleLinkedListNode<T> centerNode = list.Link;
+            list.Link = null;
+            return centerNode;
+        }
+
+        public ISingleLinkedList<T> MergeLinkedListWithLinkRearrange(ISingleLinkedList<T> list)
         {
             SingleLinkedList<T> mergedList = new SingleLinkedList<T>();
 
-            mergedList._start = MergeRearrange(_start, list._start);
+            mergedList._start = MergeRearrange(_start, list.GetHead());
 
             return mergedList;
         }
@@ -485,6 +529,81 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList
             }
 
             return startM;
+        }
+
+        public bool HasCycle()
+        {
+            if (FindCycle() != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public SingleLinkedListNode<T> FindCycle()
+        {
+            if (_start == null || _start.Link == null)
+            {
+                return null;
+            }
+
+            SingleLinkedListNode<T> slow = _start, fast = _start;
+
+            while (fast != null && fast.Link != null)
+            {
+                slow = slow.Link;
+                fast = fast.Link.Link;
+
+                if (slow == fast)
+                {
+                    return slow;
+                }
+            }
+
+            return null;
+
+        }
+
+        public void RemoveCycle()
+        {
+            // Find cycle node
+            SingleLinkedListNode<T> node = FindCycle();
+            if (node == null)
+            {
+                return;
+            }
+
+            // Determine cycle length
+            SingleLinkedListNode<T> current = node, next = node;
+            int cycleLength = 0;
+            do
+            {
+                cycleLength++;
+                next = next.Link;
+            } while (current != next);
+
+            // Determine length of list before cycle
+            int listBeforeCycleLength = 0;
+            current = _start;
+
+            while (current != next)
+            {
+                listBeforeCycleLength++;
+                current = current.Link;
+                next = next.Link;
+            }
+
+            // Remove last node link
+            int listLength = listBeforeCycleLength + cycleLength;
+
+            current = _start;
+            for (int i = 1; i <= listLength - 1; i++)
+            {
+                current = current.Link;
+            }
+
+            current.Link = null;
         }
     }
 }

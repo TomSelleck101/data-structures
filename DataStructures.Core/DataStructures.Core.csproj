@@ -40,9 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LinkedList\SingleLinkedList\SingleLinkedList.cs" />
-    <Compile Include="LinkedList\SingleLinkedList\SingleLinkedListNode.cs" />
+    <Compile Include="LinkedList\DoublyLinkedList\Implementation\DoubleLinkedList.cs" />
+    <Compile Include="LinkedList\LinkedListNodes\DoubleLinkedListNode.cs" />
+    <Compile Include="LinkedList\DoublyLinkedList\Interface\IDoubleLinkedList.cs" />
+    <Compile Include="LinkedList\SingleLinkedList\Interface\ISingleLinkedList.cs" />
+    <Compile Include="LinkedList\SingleLinkedList\Implementation\SingleLinkedList.cs" />
+    <Compile Include="LinkedList\LinkedListNodes\SingleLinkedListNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LinkedList\CircularLinkedList\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
