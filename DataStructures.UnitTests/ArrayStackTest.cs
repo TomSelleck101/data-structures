@@ -15,13 +15,35 @@ namespace DataStructures.UnitTests
         public void PushToStack()
         {
             //Arrange
-            IStack stack = new ArrayStack();
+            IStack<int> stack = new ArrayStack<int>();
 
             //Act
             stack.Push(1);
 
             //Assert
             Assert.AreEqual(1, stack.Peek());
+        }
+
+        [Test]
+        public void BalancedParenthesesTrue()
+        {
+            //Arrange
+            IStack<char> stack = new ArrayStack<char>(20);
+
+            //Act
+            //Assert
+            Assert.AreEqual(true, stack.ValidExpression("(()(())(()))"));
+        }
+
+        [Test]
+        public void BalancedParenthesesFalse()
+        {
+            //Arrange
+            IStack<char> stack = new ArrayStack<char>(20);
+
+            //Act
+            //Assert
+            Assert.AreEqual(false, stack.ValidExpression("(()(())(())))"));
         }
     }
 }

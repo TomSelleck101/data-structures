@@ -15,7 +15,7 @@ namespace DataStructures.UnitTests
         public void PushToStack()
         {
             //Arrange
-            IStack stack = new LinkedListStack();
+            IStack<int> stack = new LinkedListStack<int>();
 
             //Act
             stack.Push(1);

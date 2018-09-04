@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DataStructures.UnitTests
 {
-    public class CircularCircularLinkedListQueue
+    public class CircularLinkedListQueueTest
     {
         [Test]
         public void Enqueue()

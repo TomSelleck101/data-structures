@@ -8,9 +8,9 @@ using DataStructures.Core.Stack.Interface;
 
 namespace DataStructures.Core.Stack.Implementation
 {
-    public class LinkedListStack : IStack
+    public class LinkedListStack<T> : IStack<T>
     {
-        private SingleLinkedListNode<int> _top;
+        private SingleLinkedListNode<T> _top;
 
         public LinkedListStack()
         {
@@ -45,7 +45,7 @@ namespace DataStructures.Core.Stack.Implementation
             throw new NotImplementedException();
         }
 
-        public int Peek()
+        public T Peek()
         {
             if (IsEmpty())
             {
@@ -55,7 +55,7 @@ namespace DataStructures.Core.Stack.Implementation
             return _top.Data;
         }
 
-        public int Pop()
+        public T Pop()
         {
             if (IsEmpty())
             {
@@ -70,7 +70,7 @@ namespace DataStructures.Core.Stack.Implementation
         public int Size()
         {
             int s = 0;
-            SingleLinkedListNode<int> current = _top;
+            SingleLinkedListNode<T> current = _top;
 
             while (current != null)
             {
@@ -81,11 +81,16 @@ namespace DataStructures.Core.Stack.Implementation
             return s;
         }
 
-        public void Push(int x)
+        public void Push(T x)
         {
-            var newElement = new SingleLinkedListNode<int>(x);
+            var newElement = new SingleLinkedListNode<T>(x);
             newElement.Link = _top;
             _top = newElement;
+        }
+
+        public bool ValidExpression(IEnumerable<T> parentheses)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -43,12 +43,15 @@
     <Compile Include="Implementation\Queue\ArrayQueue.cs" />
     <Compile Include="Implementation\Queue\CircularLinkedListQueue.cs" />
     <Compile Include="Implementation\Queue\CircularQueue.cs" />
+    <Compile Include="Implementation\Queue\CircularArrayDeque.cs" />
     <Compile Include="Implementation\Queue\LinkedListQueue.cs" />
+    <Compile Include="Implementation\Queue\SortedLinkedListPriorityQueue.cs" />
     <Compile Include="Interface\Queue\IQueue.cs" />
     <Compile Include="LinkedList\CircularLinkedList\CircularLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedList\Implementation\DoubleLinkedList.cs" />
     <Compile Include="LinkedList\LinkedListNodes\DoubleLinkedListNode.cs" />
     <Compile Include="LinkedList\DoublyLinkedList\Interface\IDoubleLinkedList.cs" />
+    <Compile Include="LinkedList\LinkedListNodes\PriorityQueueNode.cs" />
     <Compile Include="LinkedList\SingleLinkedList\Interface\ISingleLinkedList.cs" />
     <Compile Include="LinkedList\SingleLinkedList\Implementation\SingleLinkedList.cs" />
     <Compile Include="LinkedList\LinkedListNodes\SingleLinkedListNode.cs" />

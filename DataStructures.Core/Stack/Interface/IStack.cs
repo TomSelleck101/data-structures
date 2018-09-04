@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace DataStructures.Core.Stack.Interface
 {
-    public interface IStack
+    public interface IStack<T>
     {
         int Size();
         bool IsEmpty();
         bool IsFull();
-        void Push(int i);
-        int Pop();
-        int Peek();
+        void Push(T i);
+        T Pop();
+        T Peek();
         void Display();
+        bool ValidExpression(IEnumerable<T> parentheses);
     }
 }

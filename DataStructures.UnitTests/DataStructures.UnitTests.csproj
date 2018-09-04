@@ -58,6 +58,7 @@
     <Compile Include="LinkedListStackTest.cs" />
     <Compile Include="SingleLinkedListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortedLinkedListPriorityQueueTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

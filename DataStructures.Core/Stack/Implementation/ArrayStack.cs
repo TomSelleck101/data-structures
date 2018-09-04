@@ -7,20 +7,20 @@ using DataStructures.Core.Stack.Interface;
 
 namespace DataStructures.Core.Stack.Implementation
 {
-    public class ArrayStack : IStack
+    public class ArrayStack<T> : IStack<T>
     {
-        private int[] _stackArray;
+        private T[] _stackArray;
         private int _top;
 
         public ArrayStack()
         {
-            _stackArray = new int[10];
+            _stackArray = new T[10];
             _top = -1;
         }
 
         public ArrayStack(int maxSize)
         {
-            _stackArray = new int[maxSize];
+            _stackArray = new T[maxSize];
             _top = -1;
         }
 
@@ -34,7 +34,7 @@ namespace DataStructures.Core.Stack.Implementation
             return _top == _stackArray.Length - 1;
         }
 
-        public int Peek()
+        public T Peek()
         {
             if (IsEmpty())
             {
@@ -44,7 +44,7 @@ namespace DataStructures.Core.Stack.Implementation
             return _stackArray[_top];
         }
 
-        public int Pop()
+        public T Pop()
         {
             if (IsEmpty())
             {
@@ -57,7 +57,7 @@ namespace DataStructures.Core.Stack.Implementation
             return popped;
         }
 
-        public void Push(int i)
+        public void Push(T i)
         {
             if (IsFull())
             {
@@ -87,6 +87,36 @@ namespace DataStructures.Core.Stack.Implementation
         public int Size()
         {
             return _top + 1;
+        }
+
+        public bool ValidExpression(IEnumerable<T> parentheses)
+        {
+            foreach (var c in parentheses)
+            {
+                if (c.Equals('('))
+                {
+                    Push(c);
+                } else if (c.Equals(')'))
+                {
+                    if (IsEmpty())
+                    {
+                        return false;
+                    }
+
+                    var popped = Pop();
+                    if (!popped.Equals('('))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (IsEmpty())
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
