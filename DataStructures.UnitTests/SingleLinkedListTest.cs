@@ -789,5 +789,74 @@ namespace DataStructures.UnitTests
             r = l.HasCycle();
             Assert.AreEqual(r, false);
         }
+
+        [Test]
+        public void ConcatenateList()
+        {
+            //Arrange
+            ISingleLinkedList<int> l1 = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l2 = new SingleLinkedList<int>();
+
+            l1.AddLast(1);
+            l1.AddLast(2);
+            l1.AddLast(3);
+
+            l2.AddLast(4);
+            l2.AddLast(5);
+            l2.AddLast(6);
+
+            // Act
+            l1.Concatenate(l2);
+
+            // Assert 
+            Assert.AreEqual(l1.GetElementPosition(1), 1);
+            Assert.AreEqual(l1.GetElementPosition(2), 2);
+            Assert.AreEqual(l1.GetElementPosition(3), 3);
+            Assert.AreEqual(l1.GetElementPosition(4), 4);
+            Assert.AreEqual(l1.GetElementPosition(5), 5);
+            Assert.AreEqual(l1.GetElementPosition(6), 6);
+        }
+
+        [Test]
+        public void ConcatenateWithEmptyList()
+        {
+            //Arrange
+            ISingleLinkedList<int> l1 = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l2 = new SingleLinkedList<int>();
+
+            l1.AddLast(1);
+            l1.AddLast(2);
+            l1.AddLast(3);
+
+            // Act
+            l1.Concatenate(l2);
+
+            // Assert 
+            Assert.AreEqual(l1.GetElementPosition(1), 1);
+            Assert.AreEqual(l1.GetElementPosition(2), 2);
+            Assert.AreEqual(l1.GetElementPosition(3), 3);
+            Assert.AreEqual(l1.Count(), 3);
+        }
+
+        [Test]
+        public void ConcatenateEmptyListWithElements()
+        {
+            //Arrange
+            ISingleLinkedList<int> l1 = new SingleLinkedList<int>();
+            ISingleLinkedList<int> l2 = new SingleLinkedList<int>();
+
+            l2.AddLast(1);
+            l2.AddLast(2);
+            l2.AddLast(3);
+
+            // Act
+            l1.Concatenate(l2);
+
+            // Assert 
+            Assert.AreEqual(l1.GetElementPosition(1), 1);
+            Assert.AreEqual(l1.GetElementPosition(2), 2);
+            Assert.AreEqual(l1.GetElementPosition(3), 3);
+            Assert.AreEqual(l1.Count(), 3);
+        }
     }
 }

@@ -28,5 +28,6 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList.Interface
         ISingleLinkedList<T> MergeLinkedListWithLinkRearrange(ISingleLinkedList<T> list);
         bool HasCycle();
         void RemoveCycle();
+        void Concatenate(ISingleLinkedList<T> list);
     }
 }

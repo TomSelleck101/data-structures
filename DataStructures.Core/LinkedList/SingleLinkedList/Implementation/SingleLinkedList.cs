@@ -605,5 +605,27 @@ namespace DataStructures.Core.LinkedList.SingleLinkedList.Implementation
 
             current.Link = null;
         }
+
+        public void Concatenate(ISingleLinkedList<T> list)
+        {
+            if (_start == null)
+            {
+                _start = list.GetHead();
+                return;
+            }
+
+            if (list.GetHead() == null)
+            {
+                return;
+            }
+
+            SingleLinkedListNode<T> current = _start;
+            while (current.Link != null)
+            {
+                current = current.Link;
+            }
+
+            current.Link = list.GetHead();
+        }
     }
 }

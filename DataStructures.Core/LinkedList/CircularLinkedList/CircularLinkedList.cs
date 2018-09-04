@@ -179,5 +179,43 @@ namespace DataStructures.Core.LinkedList.CircularLinkedList
 
             current.Link = current.Link.Link;
         }
+
+        public T GetElementPosition(int index)
+        {
+            var current = _last.Link;
+            for (int i = 1; i < index; i++)
+            {
+                current = current.Link;
+                if (current == _last.Link)
+                {
+                    throw new ArgumentException($"List is only {i} elements long");
+                }
+            }
+
+            return current.Data;
+        }
+
+        public void Concatenate(CircularLinkedList<T> list)
+        {
+            if (list.GetLast() == null)
+            {
+                return;
+            }
+
+            if (_last == null)
+            {
+                _last = list.GetLast();
+            }
+
+            var startFirstList = _last.Link;
+            var endFirstList = _last;
+            var endSecondList = list.GetLast();
+
+            endFirstList.Link = endSecondList.Link;
+            endSecondList.Link = startFirstList;
+
+            _last = endSecondList;
+
+        }
     }
 }

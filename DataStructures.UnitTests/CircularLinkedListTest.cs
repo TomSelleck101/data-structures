@@ -188,5 +188,32 @@ namespace DataStructures.UnitTests
             Assert.AreEqual(lastElem, null);
         }
 
+        [Test]
+        public void ConcatenateList()
+        {
+            //Arrange
+            CircularLinkedList<int> l1 = new CircularLinkedList<int>();
+            CircularLinkedList<int> l2 = new CircularLinkedList<int>();
+
+            l1.InsertLast(1);
+            l1.InsertLast(2);
+            l1.InsertLast(3);
+               
+            l2.InsertLast(4);
+            l2.InsertLast(5);
+            l2.InsertLast(6);
+
+            // Act
+            l1.Concatenate(l2);
+
+            // Assert 
+            Assert.AreEqual(l1.GetElementPosition(1), 1);
+            Assert.AreEqual(l1.GetElementPosition(2), 2);
+            Assert.AreEqual(l1.GetElementPosition(3), 3);
+            Assert.AreEqual(l1.GetElementPosition(4), 4);
+            Assert.AreEqual(l1.GetElementPosition(5), 5);
+            Assert.AreEqual(l1.GetElementPosition(6), 6);
+        }
+
     }
 }
