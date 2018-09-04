@@ -48,9 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayQueueTest.cs" />
     <Compile Include="ArrayStackTest.cs" />
+    <Compile Include="CircularLinkedListQueue.cs" />
     <Compile Include="CircularLinkedListTest.cs" />
+    <Compile Include="CircularQueueTest.cs" />
     <Compile Include="DoubleLinkedListTest.cs" />
+    <Compile Include="LinkedListQueueTest.cs" />
+    <Compile Include="LinkedListStackTest.cs" />
     <Compile Include="SingleLinkedListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

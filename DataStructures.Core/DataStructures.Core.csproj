@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\Queue\ArrayQueue.cs" />
+    <Compile Include="Implementation\Queue\CircularLinkedListQueue.cs" />
+    <Compile Include="Implementation\Queue\CircularQueue.cs" />
+    <Compile Include="Implementation\Queue\LinkedListQueue.cs" />
+    <Compile Include="Interface\Queue\IQueue.cs" />
     <Compile Include="LinkedList\CircularLinkedList\CircularLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedList\Implementation\DoubleLinkedList.cs" />
     <Compile Include="LinkedList\LinkedListNodes\DoubleLinkedListNode.cs" />
@@ -49,6 +54,7 @@
     <Compile Include="LinkedList\LinkedListNodes\SingleLinkedListNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stack\Implementation\ArrayStack.cs" />
+    <Compile Include="Stack\Implementation\LinkedListStack.cs" />
     <Compile Include="Stack\Interface\IStack.cs" />
   </ItemGroup>
   <ItemGroup />
