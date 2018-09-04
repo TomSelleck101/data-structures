@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayStackTest.cs" />
     <Compile Include="CircularLinkedListTest.cs" />
     <Compile Include="DoubleLinkedListTest.cs" />
     <Compile Include="SingleLinkedListTest.cs" />

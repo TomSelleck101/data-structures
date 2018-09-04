@@ -48,6 +48,8 @@
     <Compile Include="LinkedList\SingleLinkedList\Implementation\SingleLinkedList.cs" />
     <Compile Include="LinkedList\LinkedListNodes\SingleLinkedListNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stack\Implementation\ArrayStack.cs" />
+    <Compile Include="Stack\Interface\IStack.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
