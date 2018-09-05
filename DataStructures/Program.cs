@@ -105,8 +105,68 @@ namespace DataStructures
             return (n != 0) ? n % 10 + MethodG(n / 10) : 0;
         }
 
+        public static void SelectionSort(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                int lowestIndex = i;
+                for (int y = i + 1; y < array.Length; y++)
+                {
+                    if (array[y] < array[lowestIndex])
+                    {
+                        lowestIndex = y;
+                    }
+                }
+
+                if (lowestIndex != i)
+                {
+                    var temp = array[i];
+                    array[i] = array[lowestIndex];
+                    array[lowestIndex] = temp;
+                }
+            }
+        }
+
+        public static void InsertionSort(int[] array)
+        {
+            var unSortedIndex = 1;
+
+            //Go to unsorted array and get first element
+            //When you find the element it is bigger than, insert
+            //Increase unsorted index size
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                var element = array[i];
+
+                for (int y = i - 1; y >= 0; y--)
+                {
+                    //Do nothing and just increase sorted array
+                    if (array[y] < element)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        int tmp = array[y];
+                        array[y] = array[y + 1];
+                        array[y + 1] = tmp;
+                    }
+                }
+
+
+            }
+        }
+
         static void Main(string[] args)
         {
+
+            var arr = new int[] {1, 56, 25, 11, 75, 35};
+
+            InsertionSort(arr);
+
+            SelectionSort(arr);
+
             IBinaryTree bt = new BinaryTree(); 
 
             bt.CreateSampleTree();

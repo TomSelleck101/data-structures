@@ -46,6 +46,7 @@
     <Compile Include="Implementation\Queue\CircularArrayDeque.cs" />
     <Compile Include="Implementation\Queue\LinkedListQueue.cs" />
     <Compile Include="Implementation\Queue\SortedLinkedListPriorityQueue.cs" />
+    <Compile Include="Implementation\Tree\BinarySearchTree.cs" />
     <Compile Include="Implementation\Tree\BinaryTree.cs" />
     <Compile Include="Implementation\Tree\BinaryTreeNode.cs" />
     <Compile Include="Interface\Queue\IQueue.cs" />
