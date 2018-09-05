@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using DataStructures.Core.Implementation.Tree;
+using DataStructures.Core.Interface.Tree;
 using DataStructures.Core.LinkedList.SingleLinkedList.Implementation;
 
 namespace DataStructures
@@ -90,8 +93,40 @@ namespace DataStructures
 
         }
 
+        static int Count(int n)
+        {
+            if (n == 0) return 0;
+
+            return 1  + Count(n / 10);
+        }
+
+        static int MethodG(int n)
+        {
+            return (n != 0) ? n % 10 + MethodG(n / 10) : 0;
+        }
+
         static void Main(string[] args)
         {
+            IBinaryTree bt = new BinaryTree(); 
+
+            bt.CreateSampleTree();
+
+            bt.Display();
+
+            bt.PreOrderTraversal();
+
+            bt.InOrderTraversal();
+
+            bt.PostOrderTraversal();
+
+            bt.LevelOrderTraversal();
+
+            var x1 = bt.Height();
+
+
+            var y = MethodG(21345);
+
+            var x = Count(235653892);
 
             var array = new int[]{101,6,23,3,98,8,13,5,97,103};
 

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ArrayQueueTest.cs" />
     <Compile Include="ArrayStackTest.cs" />
+    <Compile Include="BinaryTreeTest.cs" />
     <Compile Include="CircularLinkedListQueue.cs" />
     <Compile Include="CircularLinkedListTest.cs" />
     <Compile Include="CircularQueueTest.cs" />
