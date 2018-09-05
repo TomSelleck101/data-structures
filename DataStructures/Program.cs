@@ -146,22 +146,43 @@ namespace DataStructures
                     {
                         break;
                     }
-                    else
-                    {
-                        int tmp = array[y];
-                        array[y] = array[y + 1];
-                        array[y + 1] = tmp;
-                    }
+
+                    int tmp = array[y];
+                    array[y] = array[y + 1];
+                    array[y + 1] = tmp;
+
                 }
 
 
             }
         }
 
+        public static void ShellSort(int[] array, int increment)
+        {
+            int j, h, temp, i;
+            for (h = increment; h >= 1; h = h - 2)
+            {
+                for (i = h; i < array.Length; i++)
+                {
+                    temp = array[i];
+
+                    for (j = i - h; j >= 0 && array[j] > temp; j = j - h)
+                    {
+                        array[j + h] = array[j];
+                    }
+
+                    array[j + h] = temp;
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
 
-            var arr = new int[] {1, 56, 25, 11, 75, 35};
+            var arr = new int[] {66, 55, 12, 2, 5, 88};
+
+            ShellSort(arr, 5);
+
 
             InsertionSort(arr);
 
